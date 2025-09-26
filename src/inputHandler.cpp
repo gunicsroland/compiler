@@ -2,12 +2,10 @@
 #include <fstream>
 #include <iostream>
 
-InputHandler::~InputHandler() = default;
-
 void InputHandler::openFile(){
 	try{
 		std::ifstream stream_in(input_file_name_m);
-		while(stream_in.eof() == false){
+		while(!stream_in.eof()){
 			std::string line;
 			std::getline(stream_in, line);
 			file_content.append(line + '\n');

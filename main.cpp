@@ -1,7 +1,7 @@
-#include "inputHandler.hpp"
+#include "./include/InputHandler.hpp"
 
 int main() {
-    InputHandler* handler = new InputHandler("input.txt", "output.txt");
+    auto* handler = new InputHandler("input.txt", "output.txt");
 
     handler->openFile();
     handler->replaceContent();
