@@ -5,9 +5,16 @@
 void InputHandler::openFile() {
     try {
         std::ifstream stream_in(input_file_name_m);
-        while (!stream_in.eof()) {
-            std::string line;
-            std::getline(stream_in, line);
+		if (!stream_in.is_open()) {
+        std::cerr << "Failed to open input file: " << input_file_name_m << '\n';
+        return;
+    	}
+
+		std::string line;
+        while (std::getline(stream_in, line)) {
+            if(line.empty()) {
+				continue;
+			}	
             file_content.append(line + '\n');
         }
 
@@ -29,9 +36,4 @@ void InputHandler::writeFile() {
     } catch (std::exception& e) {
         std::cerr << "Error: " << e.what() << '\n';
     }
-}
-
-void InputHandler::replaceContent() {
-    // TODO(roland): file handler functions
-    // TODO(roland): error handling
 }

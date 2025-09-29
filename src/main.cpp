@@ -1,10 +1,14 @@
 #include "../include/inputHandler.hpp"
+#include "../include/preprocessor.hpp"
 
 auto main() -> int {
-    auto* handler = new InputHandler("input.txt", "output.txt");
+    InputHandler handler("input.txt", "output.txt");
+    Preprocessor preprocessor;
 
-    handler->openFile();
-    handler->replaceContent();
-    handler->writeFile();
+    handler.openFile();
+    std::string content = handler.get_file_content();
+    preprocessor.replaceContent(content);
+    handler.set_file_content(content);
+    handler.writeFile();
     return 0;
 }

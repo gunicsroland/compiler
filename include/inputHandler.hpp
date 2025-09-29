@@ -41,7 +41,6 @@ class InputHandler {
 
     void openFile();
     void writeFile();
-    void replaceContent();
 
     ~InputHandler() = default;
 
