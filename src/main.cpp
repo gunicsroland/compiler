@@ -1,6 +1,6 @@
-#include "../include/InputHandler.hpp"
+#include "../include/inputHandler.hpp"
 
-int main() {
+auto main() -> int {
     auto* handler = new InputHandler("input.txt", "output.txt");
 
     handler->openFile();
