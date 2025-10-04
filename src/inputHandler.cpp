@@ -5,16 +5,17 @@
 void InputHandler::openFile() {
     try {
         std::ifstream stream_in(input_file_name_m);
-		if (!stream_in.is_open()) {
-        std::cerr << "Failed to open input file: " << input_file_name_m << '\n';
-        return;
-    	}
+        if (!stream_in.is_open()) {
+            std::cerr << "Failed to open input file: " << input_file_name_m
+                      << '\n';
+            return;
+        }
 
-		std::string line;
+        std::string line;
         while (std::getline(stream_in, line)) {
-            if(line.empty()) {
-				continue;
-			}	
+            if (line.empty()) {
+                continue;
+            }
             file_content.append(line + '\n');
         }
 

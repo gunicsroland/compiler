@@ -8,15 +8,14 @@ class InputHandler {
     InputHandler() = default;
     explicit InputHandler(std::string input_file_name)
         : input_file_name_m(std::move(input_file_name)) {}
-    InputHandler(std::string input_file_name,
-                 std::string output_file_name)
+    InputHandler(std::string input_file_name, std::string output_file_name)
         : input_file_name_m(std::move(input_file_name)),
           output_file_name_m(std::move(output_file_name)) {}
 
-        InputHandler(const InputHandler&) = default;
-        InputHandler& operator=(const InputHandler&) = default;
-        InputHandler(InputHandler&&) = default;
-        InputHandler& operator=(InputHandler&&) = default;
+    InputHandler(InputHandler const&) = default;
+    InputHandler& operator=(InputHandler const&) = default;
+    InputHandler(InputHandler&&) = default;
+    InputHandler& operator=(InputHandler&&) = default;
 
     auto get_input_file_name() {
         return input_file_name_m;

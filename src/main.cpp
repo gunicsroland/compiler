@@ -2,7 +2,7 @@
 #include "../include/preprocessor.hpp"
 
 auto main() -> int {
-    InputHandler handler("input.txt", "output.txt");
+    InputHandler handler("./bin/input.txt", "./bin/output.txt");
     Preprocessor preprocessor;
 
     handler.openFile();
