@@ -13,11 +13,14 @@ class Preprocessor {
     Preprocessor();
     ~Preprocessor() = default;
 
-    int replaceContent(std::string& content);
+    auto runAllMacros(std::string& content) -> int;
+    auto runSimpleMacros(std::string& content) -> int;
+    auto runRegexMacros(std::string& content) -> int;
 
     private:
-    const std::string lex_struct_file = "lex_struct.txt";
-    std::map<std::string, std::string> macros;
+    std::string lex_struct_file = "lex_struct.txt";
+    std::map<std::string, std::string> simple_macros;
+    std::map<std::string, std::string> regex_macros;
 
     void readLexStruct();
 };

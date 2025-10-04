@@ -7,7 +7,7 @@ auto main() -> int {
 
     handler.openFile();
     std::string content = handler.get_file_content();
-    preprocessor.replaceContent(content);
+    preprocessor.runAllMacros(content);
     handler.set_file_content(content);
     handler.writeFile();
     return 0;
