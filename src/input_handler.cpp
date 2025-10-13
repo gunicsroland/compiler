@@ -1,8 +1,8 @@
-#include "inputHandler.hpp"
+#include "../include/input_handler.hpp"
 #include <fstream>
 #include <iostream>
 
-void InputHandler::openFile() {
+void input_handler::open_file() {
     try {
         std::ifstream stream_in(input_file_name_m);
         if (!stream_in.is_open()) {
@@ -27,7 +27,7 @@ void InputHandler::openFile() {
     }
 }
 
-void InputHandler::writeFile() {
+void input_handler::write_file() {
     try {
         std::ofstream stream_out(output_file_name_m);
         stream_out << file_content;

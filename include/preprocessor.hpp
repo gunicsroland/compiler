@@ -6,23 +6,20 @@
 #include <map>
 #include <string>
 
-#include "inputHandler.hpp"
-
-class Preprocessor {
+class preprocessor {
   public:
-    Preprocessor();
-    ~Preprocessor() = default;
+    preprocessor();
 
-    auto runAllMacros(std::string& content) -> int;
-    auto runSimpleMacros(std::string& content) -> int;
-    auto runRegexMacros(std::string& content) -> int;
+    auto run_all_macros(std::string& content) -> int;
+    auto run_simple_macros(std::string& content) -> int;
+    auto run_regex_macros(std::string& content) -> int;
 
   private:
     std::string lex_struct_file = "./bin/lex_struct.txt";
     std::map<std::string, std::string> simple_macros;
     std::map<std::string, std::string> regex_macros;
 
-    void readLexStruct();
+    void read_lex_struct();
 };
 
 #endif

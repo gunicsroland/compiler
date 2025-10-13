@@ -1,20 +1,20 @@
 #include "../include/preprocessor.hpp"
 #include <regex>
 
-Preprocessor::Preprocessor() {
-    readLexStruct();
+preprocessor::preprocessor() {
+    read_lex_struct();
 }
 
 // std::string slc_regex = R"(//[^\r\n]*)";
 // std::string mlc_regex = R"(/\*[\s\S]*?\*/)";
 
-auto Preprocessor::runAllMacros(std::string& content) -> int {
-    runSimpleMacros(content);
-    runRegexMacros(content);
+auto preprocessor::run_all_macros(std::string& content) -> int {
+    run_simple_macros(content);
+    run_regex_macros(content);
     return 0;
 }
 
-auto Preprocessor::runSimpleMacros(std::string& content) -> int {
+auto preprocessor::run_simple_macros(std::string& content) -> int {
     size_t pos = 0;
     for (auto const& [key, value] : simple_macros) {
         while ((pos = content.find(key, pos)) != std::string::npos) {
@@ -24,7 +24,7 @@ auto Preprocessor::runSimpleMacros(std::string& content) -> int {
     return 0;
 }
 
-auto Preprocessor::runRegexMacros(std::string& content) -> int {
+auto preprocessor::run_regex_macros(std::string& content) -> int {
     for (auto const& [key, value] : regex_macros) {
         std::regex const rgx(key);
         content = std::regex_replace(content, rgx, value);
@@ -32,7 +32,7 @@ auto Preprocessor::runRegexMacros(std::string& content) -> int {
     return 0;
 }
 
-void Preprocessor::readLexStruct() {
+void preprocessor::read_lex_struct() {
     std::ifstream stream_in(lex_struct_file);
     std::string line;
     bool in_regex_section = false;
